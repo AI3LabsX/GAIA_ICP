@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+pypdf2 = "*"
+environs = "*"
+jinja2 = "*"
+python-telegram-bot = {version = "*", extras = ["rate-limiter"]}
+langchain = "*"
+openai = "*"
+aiogram = "*"
+tiktoken = "*"
+faiss-cpu = "*"
+diffusers = "*"
+safetensors = "*"
+invisible-watermark = "*"
+transformers = "*"
+accelerate = "*"
+sentencepiece = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.0"
