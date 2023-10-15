@@ -20,6 +20,8 @@ invisible-watermark = "*"
 transformers = "*"
 accelerate = "*"
 sentencepiece = "*"
+async-timeout = "*"
+simsimd = "*"
 
 [dev-packages]
 

@@ -26,6 +26,8 @@ from tgbot.handlers.messages import get_vectorstore_icp, generate_response
 from tgbot.utils.filters import is_admin_filter
 from tgbot.utils.templates import template
 
+
+
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
@@ -97,7 +99,7 @@ async def exit_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await start_cmd_from_user(update, context)
 
 
-history = deque(maxlen=50)
+history = deque(maxlen=2)
 embeddings = OpenAIEmbeddings()
 faiss = Path(PROJECT_ROOT).joinpath("knowladge_base", "faiss_index_ICP")
 vectorstore = get_vectorstore_icp(str(faiss), embeddings)
