@@ -23,9 +23,10 @@ from telegram.ext import ContextTypes, CommandHandler, CallbackContext
 from tgbot import PROJECT_ROOT
 from tgbot.config import BOT_LOGO
 from tgbot.handlers.messages import get_vectorstore_icp, generate_response
-from tgbot.utils.environment import env
 from tgbot.utils.filters import is_admin_filter
 from tgbot.utils.templates import template
+
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 async def start_cmd_from_admin(update: Update, context: CallbackContext) -> None:
@@ -95,8 +96,6 @@ async def exit_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     await start_cmd_from_user(update, context)
 
-
-openai.api_key = env.get_open_ai_api()
 
 history = deque(maxlen=50)
 embeddings = OpenAIEmbeddings()

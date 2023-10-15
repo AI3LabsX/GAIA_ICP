@@ -1,12 +1,15 @@
 """Launches the bot"""
+import os
+
 from telegram.constants import ParseMode
 from telegram.ext import AIORateLimiter, Application, Defaults
 
 from tgbot.handlers import HANDLERS
 from tgbot.handlers.errors import error_handler
 from tgbot.utils.bot_commands import set_default_commands
-from tgbot.utils.environment import env
 from tgbot.utils.logger import logger
+
+TELEGRAM_TOKEN = os.environ.get('BOT_TOKEN')
 
 
 async def on_startup(application: Application) -> None:
@@ -29,7 +32,7 @@ def start_bot() -> None:
     # Create the Application and pass it your bot's token.
     application: Application = (
         Application.builder()
-        .token(token=env.get_token_or_exit())
+        .token(token=TELEGRAM_TOKEN)
         .defaults(defaults=Defaults(parse_mode=ParseMode.HTML, block=False))
         .rate_limiter(rate_limiter=AIORateLimiter(max_retries=3))
         .post_init(post_init=on_startup)
