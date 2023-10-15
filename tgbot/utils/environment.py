@@ -69,12 +69,5 @@ class Environment:
             logger.critical("OPENAI_API_KEY not found: %s", repr(exc))
             sys_exit(repr(exc))
 
-    def get_token(self) -> str:
-        try:
-            return str(self._env.str("token"))
-        except EnvError as exc:
-            logger.critical("token not found: %s", repr(exc))
-            sys_exit(repr(exc))
-
 
 env: Environment = Environment(path_to_env_file=ENV_FILE)

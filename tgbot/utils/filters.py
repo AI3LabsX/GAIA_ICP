@@ -17,11 +17,12 @@ Example:
 
 More info: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions---Advanced-Filters
 """
+import os
 
 from telegram import Message
 from telegram.ext.filters import MessageFilter
 
-from tgbot.utils.environment import env
+admin = [os.environ.get("ADMINS")]
 
 
 class IsAdmin(MessageFilter):
@@ -36,7 +37,7 @@ class IsAdmin(MessageFilter):
         :return: True or False
         :rtype: bool
         """
-        return message.from_user.id in env.get_admin_ids()
+        return message.from_user.id in admin
 
 
 is_admin_filter = IsAdmin()
